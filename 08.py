@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Advent of Code 2021, but I'm learning Python
-# Star 07
+# Star 08
 import sys, re
 
 def process(lines):
@@ -15,13 +15,11 @@ def process(lines):
 
     # Read the boards first...
     for line in lines[2:]:
-        # Cast to int doesn't like casting ''
         cells = [int(x) for x in re.split('\s+', line.strip(' ')) if len(x)]
         if len(cells) > 0:
             boards[board_index] += cells
         else:
             board_index += 1
-            # +=[] doesn't append an empty array, it merges one
             boards.append([])
 
     # And now we can play Bingo
@@ -33,6 +31,7 @@ def process(lines):
                     boards_won.append(i)
                 if (i not in boards_won and len([v for v in boards[i][y : SIZE * SIZE : SIZE] if v&1024]) == SIZE):
                     boards_won.append(i)
+        # It's not the last board left, it's the last board to win...
         if len(boards_won) == len(boards):
             return unmarked(boards[boards_won[-1]]) * draw
 
