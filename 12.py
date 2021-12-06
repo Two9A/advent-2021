@@ -9,11 +9,8 @@ def process(content):
     for i in [int(v) for v in content[0].split(',')]:
         ages[i] += 1
     for day in range(0, 256):
-        cycle = ages[0]
-        for age in range(1, len(ages)):
-            ages[age-1] = ages[age]
-        ages[6] += cycle
-        ages[8] = cycle
+        ages = ages[1:] + [ages[0]]
+        ages[-3] += ages[-1]
     return sum(ages)
 
 def main():
