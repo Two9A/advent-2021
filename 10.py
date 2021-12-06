@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Advent of Code 2021, but I'm learning Python
-# Star 09
+# Star 10
 import sys
 
 def process(content):
