@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # Advent of Code 2021, but I'm learning Python
-# Star 12
+# Star 14
 import sys
-from collections import Counter
 
 def process(content):
-    # Yep, the brute-force algorithm isn't going to work
-    ages = [0] * 9
-    for i in [int(v) for v in content[0].split(',')]:
-        ages[i] += 1
-    for day in range(0, 256):
-        ages = ages[1:] + [ages[0]]
-        ages[-3] += ages[-1]
-    return sum(ages)
+    positions = [int(x) for x in content[0].split(',')]
+
+    def gauss(x):
+        return (x * (x + 1)) / 2
+
+    return min([
+        sum([gauss(abs(x - target)) for x in positions])
+        for target in range(max(positions))
+    ])
 
 def main():
     assert len(sys.argv) == 2, 'Filename not provided'
