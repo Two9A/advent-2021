@@ -1,7 +1,7 @@
 # Advent of Code 2021, but I'm learning Python
 
-![](https://img.shields.io/badge/day%20📅-13-blue)
-![](https://img.shields.io/badge/stars%20⭐-26-yellow)
+![](https://img.shields.io/badge/day%20📅-15-blue)
+![](https://img.shields.io/badge/stars%20⭐-30-yellow)
 
 It's high time I learned Python, honestly.
 
