@@ -82,11 +82,9 @@ class Node:
 
         while True:
             reducted = False
-            prevt = Node(self.__repr__())
-            do_explode(self)
+            if not reducted: do_explode(self)
             if not reducted: do_split(self)
-            if prevt.__repr__() == self.__repr__():
-                break
+            if not reducted: break
 
     def __add__(self, t):
         n = Node(f"[{self},{t}]")

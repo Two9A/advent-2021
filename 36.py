@@ -82,11 +82,9 @@ class Node:
 
         while True:
             reducted = False
-            prevt = Node(self.__repr__())
-            do_explode(self)
+            if not reducted: do_explode(self)
             if not reducted: do_split(self)
-            if prevt.__repr__() == self.__repr__():
-                break
+            if not reducted: break
 
     def __add__(self, t):
         n = Node(f"[{self},{t}]")
@@ -106,15 +104,15 @@ class Node:
             return f"[{self.left},{self.right}]"
 
 def process(content):
-    lines = [l.strip() for l in content]
+    lines = [Node(l.strip()) for l in content]
     sums = []
     for l in range(len(lines)):
         other_lines = lines.copy()
         other_lines.pop(l)
         sums.append([])
         for o in other_lines:
-            n = Node(lines[l])
-            n += Node(o)
+            n = lines[l]
+            n += o
             sums[l].append(n.magnitude())
     return max([i for l in sums for i in l])
 
